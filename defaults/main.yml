@@ -1,0 +1,46 @@
+---
+# File: defaults/main.yml - Global Hoodie variables
+
+#############################################################################
+#
+# hoodie_admin: Change to the value of the Hoodie user account; for
+# operating in development mode with Vagrant, this value should be "vagrant".
+# hoodie_dir: Change to the home directory for the bot
+# hoodie_nvm_dir: Node Version Manager installation root directory
+# hoodie_node_dir: Node.js installation root directory
+# hoodie_src_dir: Hubot source directory
+# hoodie_identity: Change to a different short user name if necessary
+# hoodie_node_version: Node.js version to use
+# hoodie_node_packages: Node.js dependencies
+# hoodie_os_packages: OS dependencies
+#
+#############################################################################
+
+hoodie_admin: vagrant
+
+hoodie_node_version: 0.10.33
+
+hoodie_dir: "/home/{{ hoodie_admin }}/hoodie"
+
+hoodie_nvm_dir: "/home/{{ hoodie_admin }}/nvm"
+
+hoodie_node_dir: "{{ hoodie_nvm_dir }}/v{{ hoodie_node_version }}"
+
+hoodie_src_dir: "/home/{{ hoodie_admin }}/src/hoodie"
+
+hoodie_identity: hoodie
+
+hoodie_node_packages:
+  - soupselect
+
+hoodie_os_packages:
+  - curl
+  - git
+  - couchdb
+  - nginx
+
+hoodie_all_dirs:
+    - "{{ hoodie_dir }}"
+    - "{{ hoodie_nvm_dir }}"
+    - "{{ hoodie_src_dir }}"
+    - "/home/{{ hoodie_admin }}/.npm"
