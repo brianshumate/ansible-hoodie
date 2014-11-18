@@ -1,0 +1,9 @@
+---
+# File: site.yml - Hoodie playbook for Vagrant based instance
+
+- name: Hoodie time!
+  hosts: hoodie
+  sudo: True
+  gather_facts: False
+  roles:
+  - { role: brianshumate.hoodie }

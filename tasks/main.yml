@@ -1,2 +1,50 @@
 ---
-# tasks file for hoodie
+# File: tasks/main.yml - Hoodie role tasks
+
+- name: Add backports repository
+  lineinfile: "dest=/etc/apt/sources.list line=# Backports repository"
+  lineinfile: "dest=/etc/apt/sources.list line=deb http://ftp.debian.org/debian wheezy-backports main contrib non-free"
+
+- name: Install OS packages
+  sudo: True
+  apt: "name={{ item }} update_cache=yes default_release=wheezy-backports"
+  with_items: hoodie_os_packages
+  tags:
+    - system_packages
+
+- name: Install Node Version Manager
+  sudo: False
+  git: "repo=https://github.com/creationix/nvm.git dest={{ hoodie_nvm_dir }} accept_hostkey=yes"
+  tags:
+    - nodejs
+
+- name: Install Node.js
+  sudo: False
+  shell: "source {{ hoodie_nvm_dir }}/nvm.sh && nvm install {{ hoodie_node_version }} creates={{ hoodie_node_dir }} executable=/bin/bash"
+  tags:
+    - nodejs
+
+- name: Hoodie user
+  user: "name={{ hoodie_admin }} home=/home/{{ hoodie_admin }} comment="Hoodie Administrator" shell=/bin/bash"
+  tags:
+    - hoodie_user
+
+- name: Hoodie user limits
+  template: "src=_hoodie.limits.j2 dest=/etc/security/limits.d/hoodie"
+  tags:
+    - hoodie_user
+
+- name: Install Hoodie
+  sudo: False
+  npm: "name={{ item }} executable={{ hubot_node_dir }}/bin/npm path={{ hubot_dir }} global=yes state=present"
+  with_items: hoodie_node_packages
+  tags:
+    - node_packages
+
+- name: Start CouchDB
+  sudo: True
+  service: name=couchdb state=started
+
+- name: Start Nginx
+  sudo: True
+  service: name=nginx state=started

@@ -1,5 +1,5 @@
 ---
-# File: defaults/main.yml - Global Hoodie variables
+# File: defaults/main.yml - Global Hoodie default variables
 
 #############################################################################
 #
@@ -16,11 +16,19 @@
 #
 #############################################################################
 
-hoodie_admin: vagrant
+hoodie_app_name: myhoodie
+
+hoodie_admin: hoodie
 
 hoodie_node_version: 0.10.33
 
-hoodie_dir: "/home/{{ hoodie_admin }}/hoodie"
+hoodie_soft_nofile: 768
+
+hoodie_hard_nofile: 1024
+
+hoodie_dir: "/home/{{ hoodie_admin }}"
+
+hoodie_app_dir: "{{ hoodie_dir }}/{{ hoodie_app_name }}"
 
 hoodie_nvm_dir: "/home/{{ hoodie_admin }}/nvm"
 
