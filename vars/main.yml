@@ -22,7 +22,7 @@ hoodie_soft_nofile: 768
 hoodie_hard_nofile: 1024
 
 hoodie_node_packages:
-  - soupselect
+  - hoodie-cli
 
 hoodie_os_packages:
   - curl

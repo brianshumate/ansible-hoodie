@@ -15,3 +15,7 @@
 
 - Change tasks to use sudo since hoodie user is not ssh user
 - Correct permissions at end of tasks
+
+## v1.0.4
+
+- Actually install hoodie-cli now
