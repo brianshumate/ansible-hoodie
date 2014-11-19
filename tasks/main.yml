@@ -1,6 +1,18 @@
 ---
 # File: tasks/main.yml - Hoodie role tasks
 
+- name: Hoodie user
+  sudo: True
+  user: "name={{ hoodie_admin }} home=/home/{{ hoodie_admin }} comment='Hoodie administrator' shell=/bin/bash"
+  tags:
+    - hoodie_user
+
+- name: Hoodie user limits
+  sudo: True
+  template: "src=hoodie.limits.j2 dest=/etc/security/limits.d/hoodie"
+  tags:
+    - hoodie_user
+
 - name: Add backports repository
   lineinfile: "dest=/etc/apt/sources.list line=# Backports repository"
   lineinfile: "dest=/etc/apt/sources.list line='deb http://ftp.debian.org/debian wheezy-backports main contrib non-free'"
@@ -23,18 +35,6 @@
   shell: "source {{ hoodie_nvm_dir }}/nvm.sh && nvm install {{ hoodie_node_version }} creates={{ hoodie_node_dir }} executable=/bin/bash"
   tags:
     - nodejs
-
-- name: Hoodie user
-  sudo: True
-  user: "name={{ hoodie_admin }} home=/home/{{ hoodie_admin }} comment='Hoodie administrator' shell=/bin/bash"
-  tags:
-    - hoodie_user
-
-- name: Hoodie user limits
-  sudo: True
-  template: "src=hoodie.limits.j2 dest=/etc/security/limits.d/hoodie"
-  tags:
-    - hoodie_user
 
 - name: Install Hoodie
   sudo: False

@@ -6,3 +6,7 @@
 
 - Fixed broken tasks
 - Refactor defaults and variables
+
+## v1.0.2
+
+- Task ordering update
