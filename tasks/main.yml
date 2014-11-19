@@ -3,7 +3,7 @@
 
 - name: Add backports repository
   lineinfile: "dest=/etc/apt/sources.list line=# Backports repository"
-  lineinfile: "dest=/etc/apt/sources.list line=deb http://ftp.debian.org/debian wheezy-backports main contrib non-free"
+  lineinfile: "dest=/etc/apt/sources.list line='deb http://ftp.debian.org/debian wheezy-backports main contrib non-free'"
 
 - name: Install OS packages
   sudo: True
@@ -25,18 +25,20 @@
     - nodejs
 
 - name: Hoodie user
-  user: "name={{ hoodie_admin }} home=/home/{{ hoodie_admin }} comment="Hoodie Administrator" shell=/bin/bash"
+  sudo: True
+  user: "name={{ hoodie_admin }} home=/home/{{ hoodie_admin }} comment='Hoodie administrator' shell=/bin/bash"
   tags:
     - hoodie_user
 
 - name: Hoodie user limits
-  template: "src=_hoodie.limits.j2 dest=/etc/security/limits.d/hoodie"
+  sudo: True
+  template: "src=hoodie.limits.j2 dest=/etc/security/limits.d/hoodie"
   tags:
     - hoodie_user
 
 - name: Install Hoodie
   sudo: False
-  npm: "name={{ item }} executable={{ hubot_node_dir }}/bin/npm path={{ hubot_dir }} global=yes state=present"
+  npm: "name={{ item }} executable={{ hoodie_node_dir }}/bin/npm path={{ hoodie_dir }} global=yes state=present"
   with_items: hoodie_node_packages
   tags:
     - node_packages
