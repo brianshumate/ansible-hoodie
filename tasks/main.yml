@@ -3,7 +3,7 @@
 
 - name: Hoodie user
   sudo: True
-  user: "name={{ hoodie_admin }} home=/home/{{ hoodie_admin }} comment='Hoodie administrator' shell=/bin/bash"
+  user: "name={{ hoodie_admin }} home={{ hoodie_dir }} comment='Hoodie administrator' shell=/bin/bash"
   tags:
     - hoodie_user
 
@@ -25,23 +25,26 @@
     - system_packages
 
 - name: Install Node Version Manager
-  sudo: False
+  sudo: True
   git: "repo=https://github.com/creationix/nvm.git dest={{ hoodie_nvm_dir }} accept_hostkey=yes"
   tags:
     - nodejs
 
 - name: Install Node.js
-  sudo: False
+  sudo: True
   shell: "source {{ hoodie_nvm_dir }}/nvm.sh && nvm install {{ hoodie_node_version }} creates={{ hoodie_node_dir }} executable=/bin/bash"
   tags:
     - nodejs
 
 - name: Install Hoodie
-  sudo: False
+  sudo: True
   npm: "name={{ item }} executable={{ hoodie_node_dir }}/bin/npm path={{ hoodie_dir }} global=yes state=present"
   with_items: hoodie_node_packages
   tags:
     - node_packages
+
+- name: Correct permissions
+  file: "path={{ hoodie_dir }} owner={{ hoodie_admin }} recurse=yes"
 
 - name: Start CouchDB
   sudo: True
