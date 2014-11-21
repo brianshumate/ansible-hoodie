@@ -23,3 +23,7 @@
 ## v1.0.5
 
 - Remove extraneous Debian packages
+
+## v1.0.6
+
+- Remove nonsensical backports

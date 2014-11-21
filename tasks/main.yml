@@ -13,10 +13,6 @@
   tags:
     - hoodie_user
 
-- name: Add backports repository
-  lineinfile: "dest=/etc/apt/sources.list line=# Backports repository"
-  lineinfile: "dest=/etc/apt/sources.list line='deb http://ftp.debian.org/debian wheezy-backports main contrib non-free'"
-
 - name: Install OS packages
   sudo: True
   apt: "name={{ item }} update_cache=yes default_release=wheezy-backports"
