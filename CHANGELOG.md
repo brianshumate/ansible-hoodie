@@ -27,3 +27,7 @@
 ## v1.0.6
 
 - Remove nonsensical backports
+
+## v1.0.7
+
+- Task fixes

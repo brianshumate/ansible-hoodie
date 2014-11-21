@@ -15,7 +15,7 @@
 
 - name: Install OS packages
   sudo: True
-  apt: "name={{ item }} update_cache=yes default_release=wheezy-backports"
+  apt: "name={{ item }} update_cache=yes"
   with_items: hoodie_os_packages
   tags:
     - system_packages
