@@ -19,3 +19,7 @@
 ## v1.0.4
 
 - Actually install hoodie-cli now
+
+## v1.0.5
+
+- Remove extraneous Debian packages
