@@ -45,10 +45,6 @@ At a minimum, visit the variables defined in the following files:
 There is more information in the main project
 [README](README.md) about these variables.
 
-Then, copy `templates/hoodie.env.j2` to `templates/_hoodie.env.j2` and update
-as necessary with the particular environment variables you need for your
-Hoodie instance.
-
 ### Launch
 
 After configuring your Hoodie instance environment variables, you should be

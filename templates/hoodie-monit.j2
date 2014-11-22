@@ -1,0 +1,4 @@
+check process hoodie with pidfile /home/hoodie/log/hoodie.pid
+  start program = "/home/hoodie/hoodie-daemon.sh start"
+  stop program  = "/home/hoodie/hoodie-daemon.sh stop"
+  if failed URL https://{{ hoodie_app_domain }}/_api then restart

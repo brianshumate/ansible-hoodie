@@ -3,9 +3,8 @@
 
 #############################################################################
 #
-# hoodie_admin: Change to the value of the Hoodie user account; for
-# use with Vagrant virtual machines, this value should be 'vagrant'.
-# hoodie_app_name: Name of Hoodie application
+# hoodie_app_name: Name of the Hoodie app
+# hoodie_app_domain: Fully Qualified Domain Name (FQDN) of the Hoodie app
 # hoodie_soft_nofile: Soft open files limit for the hoodie user
 # hoodie_hard_nofile: Hard open files limit for the hoodie user
 # hoodie_node_packages: Node.js dependencies
@@ -13,9 +12,11 @@
 #
 #############################################################################
 
-hoodie_admin: hoodie
+hoodie_app_name: "myhoodie"
 
-hoodie_app_name: myhoodie
+hoodie_app_dir: "{{ hoodie_dir }}/{{ hoodie_app_name }}"
+
+hoodie_app_domain: "example.com"
 
 hoodie_soft_nofile: 768
 
@@ -25,13 +26,8 @@ hoodie_node_packages:
   - hoodie-cli
 
 hoodie_os_packages:
-  - build-essential
-  - libtool
-  - autoconf
-  - automake
-  - autoconf-archive
-  - pkg-config
   - curl
   - git
   - couchdb
+  - monit
   - nginx

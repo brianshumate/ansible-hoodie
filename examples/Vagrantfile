@@ -5,15 +5,13 @@
 # provider and Ansible provisioiner on Ubuntu virtual machine
 
 VAGRANTFILE_API_VERSION = "2"
-BOX_MEM = ENV['BOX_MEM'] || "1536"
-BOX_NAME =  ENV['BOX_NAME'] || "precise64"
-BOX_URI = ENV['BOX_URI'] || "https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box"
-BOT_HOST = ENV['BOT_HOST'] || "vagrant_hosts"
+BOX_MEM = ENV['BOX_MEM'] || "2048"
+BOX_NAME =  ENV['BOX_NAME'] || "ubuntu/trusty64"
+HOODIE_HOST = ENV['HOODIE_HOST'] || "vagrant_hosts"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :hoodie do |hoodie_config|
     hoodie_config.vm.box = BOX_NAME
-    hoodie_config.vm.box_url = BOX_URI
     hoodie_config.vm.network :private_network, ip: "10.1.1.74"
     hoodie_config.vm.hostname = "hoodie.local"
     hoodie_config.ssh.forward_agent = true
@@ -26,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
     end
     hoodie_config.vm.provision :ansible do |ansible|
-      ansible.inventory_path = BOT_HOST
+      ansible.inventory_path = HOODIE_HOST
       ansible.playbook = "site.yml"
     end
   end

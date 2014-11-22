@@ -1,0 +1,9 @@
+/var/log/hoodie.std* {
+       weekly
+       rotate 10
+       copytruncate
+       delaycompress
+       compress
+       notifempty
+       missingok
+}

@@ -31,3 +31,13 @@
 ## v1.0.7
 
 - Task fixes
+
+## v1.08
+
+- Streamline installed OS packages
+- Add log rotation configuration
+- Add Monit configuration
+- Add Nginx configuration
+- Update Vagrantfile
+- Update variables
+- Update docs

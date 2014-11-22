@@ -39,6 +39,14 @@
   tags:
     - node_packages
 
+- name: Log rotation configuration
+  sudo: True
+  file: "src=hoodie-logrotate dest=/etc/logrotate.d/hoodie}}"
+
+- name: Monit configuration
+  sudo: True
+  template: "src=hoodie-monit.j2 dest=/etc/monit.d/hoodie}}"
+
 - name: Correct permissions
   file: "path={{ hoodie_dir }} owner={{ hoodie_admin }} recurse=yes"
 
@@ -46,6 +54,9 @@
   sudo: True
   service: name=couchdb state=started
 
+- name: Configure Nginx virtual host
+  template: "src=hoodie-nginx.conf.j2 dest=/etc/nginx/vhosts.d/{{ hoodie_app_name }}.conf}}"
+
 - name: Start Nginx
   sudo: True
-  service: name=nginx state=started
+  service: name=nginx state=restarted
