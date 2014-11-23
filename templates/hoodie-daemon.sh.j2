@@ -14,7 +14,7 @@
 # kill -INT pid # so couchdb can stop gracefully
 # rm the pidfile
 
-apphome={{ hoodie_dir }}/{{ hoodie_app_dir }}
+apphome={{ hoodie_home }}/{{ hoodie_app_dir }}
 pidfile=$apphome/run/hoodie.pid
 stdoutfile=$apphome/log/hoodie.stdout
 stderrfile=$apphome/log/hoodie.stderr

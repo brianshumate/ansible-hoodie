@@ -42,3 +42,7 @@
 - Update variables
 - Update docs
 - Nginx SSL task
+
+## v1.0.9
+
+- Update hoodie_home

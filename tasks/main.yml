@@ -3,7 +3,7 @@
 
 - name: Hoodie user
   sudo: True
-  user: "name={{ hoodie_admin }} home={{ hoodie_dir }} comment='Hoodie administrator' shell=/bin/bash"
+  user: "name={{ hoodie_admin }} home={{ hoodie_home }} comment='Hoodie administrator' shell=/bin/bash"
   tags:
     - hoodie_user
 
@@ -34,7 +34,7 @@
 
 - name: Install Hoodie
   sudo: True
-  npm: "name={{ item }} executable={{ hoodie_node_dir }}/bin/npm path={{ hoodie_dir }} global=yes state=present"
+  npm: "name={{ item }} executable={{ hoodie_node_dir }}/bin/npm path={{ hoodie_home }} global=yes state=present"
   with_items: hoodie_node_packages
   tags:
     - nodejs
@@ -49,7 +49,7 @@
   tags: monit
 
 - name: Correct permissions
-  file: "path={{ hoodie_dir }} owner={{ hoodie_admin }} recurse=yes"
+  file: "path={{ hoodie_home }} owner={{ hoodie_admin }} recurse=yes"
 
 - name: Start CouchDB
   sudo: True

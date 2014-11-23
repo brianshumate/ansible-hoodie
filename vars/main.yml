@@ -14,7 +14,7 @@
 
 hoodie_app_name: "myhoodie"
 
-hoodie_app_dir: "{{ hoodie_dir }}/{{ hoodie_app_name }}"
+hoodie_app_dir: "{{ hoodie_home }}/{{ hoodie_app_name }}"
 
 hoodie_app_domain: "example.com"
 
