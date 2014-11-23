@@ -24,7 +24,7 @@ function on Ubuntu with the following specific software versions:
 * Ansible: 1.7.2
 * Hoodie: 0.6.3
 * Node.js: 0.10.33
-* Debian: 7.7
+* Ubuntu: 14.04
 
 ## Role Variables
 
