@@ -4,22 +4,6 @@
 #############################################################################
 #
 # hoodie_node_version: Node.js version to use
-# hoodie_nvm_dir: Node Version Manager installation root directory
-# hoodie_node_dir: Node.js installation root directory
-# hoodie_src_dir: Hubot source directory
-# hoodie_all_dirs: List of Hoodie related directories
 #############################################################################
 
 hoodie_node_version: 0.10.33
-
-hoodie_nvm_dir: "{{ hoodie_home }}/nvm"
-
-hoodie_node_dir: "{{ hoodie_nvm_dir }}/v{{ hoodie_node_version }}"
-
-hoodie_src_dir: "{{ hoodie_home }}/src/{{ hoodie_admin }}"
-
-hoodie_all_dirs:
-    - "{{ hoodie_home }}"
-    - "{{ hoodie_nvm_dir }}"
-    - "{{ hoodie_src_dir }}"
-    - "{{ hoodie_home }}/.npm"

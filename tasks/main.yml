@@ -2,12 +2,12 @@
 # File: tasks/main.yml - Hoodie role tasks
 
 - name: sudo Configuration
-  lineinfile: "dest/etc/sudoers line='Defaults    always_set_home'"
-  lineinfile: "dest/etc/sudoers line='Defaults    set_home'"
+  lineinfile: "dest=/etc/sudoers line='Defaults    always_set_home'"
+  lineinfile: "dest=/etc/sudoers line='Defaults    set_home'"
 
 - name: Hoodie user
   sudo: True
-  user: "name={{ hoodie_admin }} home=yes comment='Hoodie administrator' shell=/bin/bash"
+  user: "name={{ hoodie_admin }} home=/home/{{ hoodie_admin }} comment='Hoodie administrator' shell=/bin/bash"
   tags:
     - hoodie_user
 
@@ -26,19 +26,19 @@
 
 - name: Install Node Version Manager
   sudo: True
-  git: "repo=https://github.com/creationix/nvm.git dest={{ hoodie_nvm_dir }} accept_hostkey=yes"
+  git: "repo=https://github.com/creationix/nvm.git dest=/home/{{ hoodie_admin/ }}/nvm accept_hostkey=yes"
   tags:
     - nodejs
 
 - name: Install Node.js
   sudo: True
-  shell: "source {{ hoodie_nvm_dir }}/nvm.sh && nvm install {{ hoodie_node_version }} creates={{ hoodie_node_dir }} executable=/bin/bash"
+  shell: "source /home/{{ hoodie_admin/ }}/nvm/nvm.sh && nvm install {{ hoodie_node_version }} creates=/home/{{ hoodie_admin }}/nvm//v{{ hoodie_node_version }} executable=/bin/bash"
   tags:
     - nodejs
 
 - name: Install Hoodie
   sudo: True
-  npm: "name={{ item }} executable={{ hoodie_node_dir }}/bin/npm path={{ hoodie_home }} global=yes state=present"
+  npm: "name={{ item }} executable=/home/{{ hoodie_admin }}/v{{ hoodie_node_version }}/bin/npm path=/home/{{ hoodie_admin }} global=yes state=present"
   with_items: hoodie_node_packages
   tags:
     - nodejs
@@ -58,7 +58,7 @@
   tags: monit
 
 - name: Correct permissions
-  file: "path={{ hoodie_home }} owner={{ hoodie_admin }} recurse=yes"
+  file: "path=/home/{{ hoodie_admin }} owner={{ hoodie_admin }} recurse=yes"
 
 - name: Hoodie CouchDB settings
   copy: "src=hoodie-local.d dest=/etc/couchdb/local.d/hoodie owner=couchdb group=couchdb"

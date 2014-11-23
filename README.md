@@ -33,20 +33,9 @@ All variables are specified in `defaults/main.yml` and `vars/main.yml`.
 
 ### Defaults
 
-hoodie_node_version: Node.js version to use
-hoodie_nvm_dir: Node Version Manager installation root directory
-hoodie_node_dir: Node.js installation root directory
-hoodie_src_dir: Hubot source directory
-hoodie_all_dirs: List of Hoodie related directories
-
-
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
 | hoodie_node_version | 0.10.33 | Preferred Node.js version |
-| hoodie_nvm_dir  | /home/{{ hoodie_admin }}/nvm | Directory for Node Version Manager (nvm) installation |
-| hoodie_node_dir | {{ hoodie_nvm_dir }}/v{{ hoodie_node_version }}/bin | Directory for Node.js installation
-| hoodie_src_dir | /home/{{ hoodie_admin }}/src/hoodie | Directory for Hoodie source code
-| hoodie_all_dirs | List | List of Hoodie related directories
 
 The following OS dependency packages are defined in `hoodie_os_packages` and
 installed by default:
@@ -61,9 +50,8 @@ installed by default:
 
 | Name            | Default Value | Description                        |
 | --------------  | ------------- | -----------------------------------|
-| hoodie_app_name | None          |Name of the Hoodie app
 | hoodie_admin    | hoodie        | Hoodie user account; for Vagrants, this should be 'vagrant'.
-| hoodie_home     | /home/hoodie  | Hoodie user home directory
+| hoodie_app_name | None          |Name of the Hoodie app
 | hoodie_app_domain | None       | Fully Qualified Domain Name (FQDN) of the Hoodie app
 | hoodie_soft_nofile | 768 | Soft open files limit for the hoodie user
 | hoodie_hard_nofile | 1024 | Hard open files limit for the hoodie user
