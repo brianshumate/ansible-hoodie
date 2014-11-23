@@ -83,6 +83,8 @@ examples:
 Replace *myhoodie.example.com* in the above examples with the actual
 fully qualified domain name of your hoodie application in your filenames.
 
+Note that the underscore (_) preceding the filenames is required.
+
 ## Example Playbook
 
 After configuration, a basic Hoodie installation and activation is possible
