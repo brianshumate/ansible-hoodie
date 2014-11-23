@@ -56,6 +56,10 @@
 - name: Correct permissions
   file: "path={{ hoodie_home }} owner={{ hoodie_admin }} recurse=yes"
 
+- name: Hoodie CouchDB settings
+  copy: "src=hoodie-local.d dest=/etc/couchdb/local.d/hoodie owner=couchdb group=couchdb"
+  tags: couchdb
+
 - name: Start CouchDB
   sudo: True
   service: name=couchdb state=started
