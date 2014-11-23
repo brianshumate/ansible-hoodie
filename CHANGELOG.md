@@ -32,7 +32,7 @@
 
 - Task fixes
 
-## v1.08
+## v1.0.8
 
 - Streamline installed OS packages
 - Add log rotation configuration
@@ -41,3 +41,7 @@
 - Update Vagrantfile
 - Update variables
 - Update docs
+
+## v1.0.9
+
+- Nginx SSL task

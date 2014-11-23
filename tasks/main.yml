@@ -37,7 +37,7 @@
   npm: "name={{ item }} executable={{ hoodie_node_dir }}/bin/npm path={{ hoodie_dir }} global=yes state=present"
   with_items: hoodie_node_packages
   tags:
-    - node_packages
+    - nodejs
 
 - name: Log rotation configuration
   sudo: True
@@ -46,6 +46,7 @@
 - name: Monit configuration
   sudo: True
   template: "src=hoodie-monit.j2 dest=/etc/monit.d/hoodie}}"
+  tags: monit
 
 - name: Correct permissions
   file: "path={{ hoodie_dir }} owner={{ hoodie_admin }} recurse=yes"
@@ -53,10 +54,18 @@
 - name: Start CouchDB
   sudo: True
   service: name=couchdb state=started
+  tags: couchdb
+
+- name: Install SSL cert and key
+  file: "src=_{{ hoodie_app_domain }}.chained.crt dest=/etc/ssl/{{ hoodie_app_domain }}/{{ hoodie_app_domain }}.chained.crt"
+  file: "src=_{{ hoodie_app_domain }}/{{ hoodie_app_domain }}.key dest=/etc/ssl/{{ hoodie_app_domain }}/{{ hoodie_app_domain }}.key"
+  tags: nginx
 
 - name: Configure Nginx virtual host
   template: "src=hoodie-nginx.conf.j2 dest=/etc/nginx/vhosts.d/{{ hoodie_app_name }}.conf}}"
+  tags: nginx
 
 - name: Start Nginx
   sudo: True
   service: name=nginx state=restarted
+  tags: nginx
