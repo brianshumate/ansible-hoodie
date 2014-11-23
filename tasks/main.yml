@@ -86,6 +86,10 @@
   file: "src=/etc/nginx/sites-available/{{ hoodie_app_domain }}.conf dest=/etc/nginx/sites-enabled/{{ hoodie_app_domain }}.conf state=link"
   tags: nginx
 
+- name: Remove Nginx default host
+  file: "path=/etc/nginx/sites-enabled/default state=absent"
+  tags: nginx
+
 - name: Start Nginx
   sudo: True
   service: name=nginx state=restarted

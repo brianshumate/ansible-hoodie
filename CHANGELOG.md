@@ -60,3 +60,7 @@
 
 - Refactor variables
 - Update docs
+
+## v1.0.13
+
+- Remove default Nginx host so that Nginx will start
