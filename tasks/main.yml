@@ -1,9 +1,13 @@
 ---
 # File: tasks/main.yml - Hoodie role tasks
 
+- name: sudo Configuration
+  lineinfile: "dest/etc/sudoers line='Defaults    always_set_home'"
+  lineinfile: "dest/etc/sudoers line='Defaults    set_home'"
+
 - name: Hoodie user
   sudo: True
-  user: "name={{ hoodie_admin }} home={{ hoodie_home }} comment='Hoodie administrator' shell=/bin/bash"
+  user: "name={{ hoodie_admin }} home=yes comment='Hoodie administrator' shell=/bin/bash"
   tags:
     - hoodie_user
 

@@ -64,3 +64,7 @@
 ## v1.0.13
 
 - Remove default Nginx host so that Nginx will start
+
+# v1.0.14
+
+- sudo Configuration
