@@ -55,3 +55,8 @@
 ## v1.0.11
 
 - Add Hoodie CouchDB settings
+
+## v1.0.12
+
+- Refactor variables
+- Update docs

@@ -4,6 +4,8 @@
 #############################################################################
 #
 # hoodie_app_name: Name of the Hoodie app
+# hoodie_admin: Hoodie user account; for Vagrants, this should be 'vagrant'.
+# hoodie_home: Hoodie user home directory
 # hoodie_app_domain: Fully Qualified Domain Name (FQDN) of the Hoodie app
 # hoodie_soft_nofile: Soft open files limit for the hoodie user
 # hoodie_hard_nofile: Hard open files limit for the hoodie user
@@ -11,6 +13,10 @@
 # hoodie_os_packages: OS dependencies
 #
 #############################################################################
+
+hoodie_admin: "hoodie"
+
+hoodie_home: "/home/{{ hoodie_admin }}"
 
 hoodie_app_name: "myhoodie"
 

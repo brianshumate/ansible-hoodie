@@ -4,8 +4,6 @@
 #############################################################################
 #
 # hoodie_node_version: Node.js version to use
-# hoodie_admin: Hoodie user account; for Vagrants, this should be 'vagrant'.
-# hoodie_home: Hoodie user home directory
 # hoodie_nvm_dir: Node Version Manager installation root directory
 # hoodie_node_dir: Node.js installation root directory
 # hoodie_src_dir: Hubot source directory
@@ -13,10 +11,6 @@
 #############################################################################
 
 hoodie_node_version: 0.10.33
-
-hoodie_admin: "hoodie"
-
-hoodie_home: "/home/{{ hoodie_admin }}"
 
 hoodie_nvm_dir: "{{ hoodie_home }}/nvm"
 

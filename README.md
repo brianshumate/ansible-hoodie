@@ -23,8 +23,6 @@ This Hoodie role requires a Debian based Linux host and has been tested to
 function on Ubuntu with the following specific software versions:
 
 * Ansible: 1.7.2
-* VirtualBox: 4.3.16
-* Vagrant: 1.6.5
 * Hoodie: 0.6.3
 * Node.js: 0.10.33
 * Debian: 7.7
@@ -45,8 +43,6 @@ hoodie_all_dirs: List of Hoodie related directories
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
 | hoodie_node_version | 0.10.33 | Preferred Node.js version |
-| hoodie_admin    | hoodie        | Hoodie user account; for Vagrants, this should be 'vagrant'.
-| hoodie_home     | /home/hoodie  | Hoodie user home directory
 | hoodie_nvm_dir  | /home/{{ hoodie_admin }}/nvm | Directory for Node Version Manager (nvm) installation |
 | hoodie_node_dir | {{ hoodie_nvm_dir }}/v{{ hoodie_node_version }}/bin | Directory for Node.js installation
 | hoodie_src_dir | /home/{{ hoodie_admin }}/src/hoodie | Directory for Hoodie source code
@@ -66,6 +62,8 @@ installed by default:
 | Name            | Default Value | Description                        |
 | --------------  | ------------- | -----------------------------------|
 | hoodie_app_name | None          |Name of the Hoodie app
+| hoodie_admin    | hoodie        | Hoodie user account; for Vagrants, this should be 'vagrant'.
+| hoodie_home     | /home/hoodie  | Hoodie user home directory
 | hoodie_app_domain | None       | Fully Qualified Domain Name (FQDN) of the Hoodie app
 | hoodie_soft_nofile | 768 | Soft open files limit for the hoodie user
 | hoodie_hard_nofile | 1024 | Hard open files limit for the hoodie user
