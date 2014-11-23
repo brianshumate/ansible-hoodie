@@ -13,9 +13,8 @@ This is an [Ansible](http://www.ansible.com/) role for
 [Hoodie](http://hood.ie/), the wonderful offline-first web application
 development environment.
 
-**IN PROGRESS** This role is based on the
-[Hoodie Deployment Guide](https://github.com/hoodiehq/my-first-hoodie/blob/master/deployment.md)
-and still requires some work around support for HTTPS and more.
+This role is based on the
+[Hoodie Deployment Guide](https://github.com/hoodiehq/my-first-hoodie/blob/master/deployment.md).
 
 ## Requirements
 
