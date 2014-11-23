@@ -111,6 +111,13 @@ hoodie start
 Replace *0.10.33* and *myhoodie* in the above examples with your actual
 Node.js version number and the name of your Hoodie application respectively.
 
+You should now be able to access your application at the FQDN you specified in
+the `hoodie_app_domain` variable, e.g.:
+
+```
+htts://example.com/
+```
+
 ## Dependencies
 
 None
@@ -121,4 +128,4 @@ Apache 2
 
 ## Author Information
 
-[Brian Shumate](http://brianshumate.com)
+[Brian Shumate](https://github.com/brianshumate)
