@@ -66,21 +66,49 @@ necessary:
 * `defaults/main.yml`
 * `vars/main.yml`
 
-Copy `hosts.example` to `hosts` and edit it to update the values for your
-Hoodie host. Be sure to change the following values:
+Copy the `examples/hosts.example` inventory to `hosts` and edit it to update
+the values for your Hoodie host. Be sure to change the following values:
 
 * `0.0.0.0`
 * `hoodie`
 * `~/.ssh/hoodie_id`
 
+You'll then need to provide an SSL chained certificate and corresponding
+private key, by copying them into this role's `files` directory; the filename
+for the source certificate and key should be in the format of the following
+examples:
+
+* `_myhoodie.example.com.chained.crt`
+* `_myhoodie.example.com.key`
+
+Replace *myhoodie.example.com* in the above examples with the actual
+fully qualified domain name of your hoodie application in your filenames.
+
 ## Example Playbook
 
-After configuration a basic Hoodie installation and activation is possible
+After configuration, a basic Hoodie installation and activation is possible
 using the included `site.yml` playbook:
 
 ```
 ansible-playbook -i hosts site.yml
 ```
+
+### Getting Started
+
+After the successful execution of this role, you can log into your Hoodie
+host machine and issue the following commands *as the hoodie user* to start
+your new Hoodie application:
+
+```
+source nvm/nvm.sh
+nvm use v0.10.33
+hoodie create myhoodie
+cd myhoodie
+hoodie start
+```
+
+Replace *0.10.33* and *myhoodie* in the above examples with your actual
+Node.js version number and the name of your Hoodie application respectively.
 
 ## Dependencies
 

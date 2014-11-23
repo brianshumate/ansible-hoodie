@@ -26,26 +26,26 @@
 
 - name: Install Node Version Manager
   sudo: True
-  git: "repo=https://github.com/creationix/nvm.git dest=/home/{{ hoodie_admin/ }}/nvm accept_hostkey=yes"
+  git: "repo=https://github.com/creationix/nvm.git dest=/home/{{ hoodie_admin }}/nvm accept_hostkey=yes"
   tags:
     - nodejs
 
 - name: Install Node.js
   sudo: True
-  shell: "source /home/{{ hoodie_admin/ }}/nvm/nvm.sh && nvm install {{ hoodie_node_version }} creates=/home/{{ hoodie_admin }}/nvm//v{{ hoodie_node_version }} executable=/bin/bash"
+  shell: "source /home/{{ hoodie_admin }}/nvm/nvm.sh && nvm install {{ hoodie_node_version }} creates=/home/{{ hoodie_admin }}/nvm//v{{ hoodie_node_version }} executable=/bin/bash"
   tags:
     - nodejs
 
 - name: Install Hoodie
   sudo: True
-  npm: "name={{ item }} executable=/home/{{ hoodie_admin }}/v{{ hoodie_node_version }}/bin/npm path=/home/{{ hoodie_admin }} global=yes state=present"
+  npm: "name={{ item }} executable=/home/{{ hoodie_admin }}/nvm/v{{ hoodie_node_version }}/bin/npm path=/home/{{ hoodie_admin }} global=yes state=present"
   with_items: hoodie_node_packages
   tags:
     - nodejs
 
 - name: Log rotation configuration
   sudo: True
-  copy: "src=hoodie-logrotate dest=/etc/logrotate.d/hoodie}}"
+  copy: "src=hoodie-logrotate dest=/etc/logrotate.d/hoodie }}"
 
 - name: Monit configuration directory
   sudo: True
@@ -54,7 +54,7 @@
 
 - name: Monit configuration
   sudo: True
-  template: "src=hoodie-monit.j2 dest=/etc/monit.d/hoodie}}"
+  template: "src=hoodie-monit.j2 dest=/etc/monit.d/hoodie }}"
   tags: monit
 
 - name: Correct permissions

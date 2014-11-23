@@ -73,3 +73,8 @@
 
 - Refactor variables
 - Update documentation
+
+## v1.1.0
+
+- First working out of the box version
+- Documentation updated
