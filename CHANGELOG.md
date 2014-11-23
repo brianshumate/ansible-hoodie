@@ -41,7 +41,4 @@
 - Update Vagrantfile
 - Update variables
 - Update docs
-
-## v1.0.9
-
 - Nginx SSL task
