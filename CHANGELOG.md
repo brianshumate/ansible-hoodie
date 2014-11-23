@@ -51,3 +51,7 @@
 
 - Updated Nginx configuration
 - Fixed SSL bits
+
+## v1.0.11
+
+- Add Hoodie CouchDB settings
