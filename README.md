@@ -51,7 +51,7 @@ installed by default:
 | --------------  | ------------- | -----------------------------------|
 | hoodie_admin    | hoodie        | Hoodie user account; for Vagrants, this should be 'vagrant'.
 | hoodie_app_name | myhoodie | Name of the Hoodie app
-| hoodie_app_domain | example.com | Fully Qualified Domain Name (FQDN) of the Hoodie app
+| hoodie_app_domain | example.com | Fully Qualified Domain Name of the Hoodie app
 | hoodie_soft_nofile | 768 | Soft open files limit for the hoodie user
 | hoodie_hard_nofile | 1024 | Hard open files limit for the hoodie user
 | hoodie_node_packages | List | Node.js dependencies
