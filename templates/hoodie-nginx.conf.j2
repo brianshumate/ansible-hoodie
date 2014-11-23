@@ -1,7 +1,7 @@
 server {
   listen *:80 default_server;
   server_name {{ hoodie_app_domain }};
-  access_log /var/log/nginx/{{ hoodie_app_domain }}.access_log proxy;
+  access_log /var/log/nginx/{{ hoodie_app_domain }}.access_log;
   error_log /var/log/nginx/{{ hoodie_app_domain }}.error_log warn;
 
   # force all over https
@@ -12,7 +12,6 @@ server {
 server {
   listen *:443;
   server_name {{ hoodie_app_domain }};
-  access_log /var/log/nginx/{{ hoodie_app_domain }}.ssl_access_log proxy;
   error_log /var/log/nginx/{{ hoodie_app_domain }}.ssl_error_log warn;
 
   ssl on;

@@ -41,7 +41,12 @@
 
 - name: Log rotation configuration
   sudo: True
-  file: "src=hoodie-logrotate dest=/etc/logrotate.d/hoodie}}"
+  copy: "src=hoodie-logrotate dest=/etc/logrotate.d/hoodie}}"
+
+- name: Monit configuration directory
+  sudo: True
+  file: "path=/etc/monit.d state=directory"
+  tags: monit
 
 - name: Monit configuration
   sudo: True
@@ -56,13 +61,25 @@
   service: name=couchdb state=started
   tags: couchdb
 
-- name: Install SSL cert and key
-  file: "src=_{{ hoodie_app_domain }}.chained.crt dest=/etc/ssl/{{ hoodie_app_domain }}/{{ hoodie_app_domain }}.chained.crt"
-  file: "src=_{{ hoodie_app_domain }}/{{ hoodie_app_domain }}.key dest=/etc/ssl/{{ hoodie_app_domain }}/{{ hoodie_app_domain }}.key"
+- name: SSL directory
+  sudo: True
+  file: "path=/etc/ssl/{{ hoodie_app_domain }} state=directory"
   tags: nginx
 
-- name: Configure Nginx virtual host
-  template: "src=hoodie-nginx.conf.j2 dest=/etc/nginx/vhosts.d/{{ hoodie_app_name }}.conf}}"
+- name: Install SSL chained cert
+  copy: "src=_{{ hoodie_app_domain }}.chained.crt dest=/etc/ssl/{{ hoodie_app_domain }}/{{ hoodie_app_domain }}.chained.crt"
+  tags: nginx
+
+- name: Install SSL key
+  copy: "src=_{{ hoodie_app_domain }}.key dest=/etc/ssl/{{ hoodie_app_domain }}/{{ hoodie_app_domain }}.key"
+  tags: nginx
+
+- name: Nginx virtual host config
+  template: "src=hoodie-nginx.conf.j2 dest=/etc/nginx/sites-available/{{ hoodie_app_domain }}.conf"
+  tags: nginx
+
+- name: Link Nginx virtual host
+  file: "src=/etc/nginx/sites-available/{{ hoodie_app_domain }}.conf dest=/etc/nginx/sites-enabled/{{ hoodie_app_domain }}.conf state=link"
   tags: nginx
 
 - name: Start Nginx

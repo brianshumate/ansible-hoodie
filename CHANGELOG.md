@@ -46,3 +46,8 @@
 ## v1.0.9
 
 - Update hoodie_home
+
+## v1.0.10
+
+- Updated Nginx configuration
+- Fixed SSL bits
