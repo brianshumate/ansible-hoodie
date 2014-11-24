@@ -85,3 +85,7 @@
 - Install `hoodie-bootstrap.sh` to bootstrap the Hoodie application
 - Install `hoodie-daemon.sh` script for running Hoodie in production
 - Update documentation
+
+## v1.1.2
+
+- Fix tasks
