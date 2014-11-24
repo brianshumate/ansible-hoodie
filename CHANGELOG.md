@@ -78,3 +78,10 @@
 
 - First working out of the box version
 - Documentation updated
+
+## v1.1.1
+
+- Configure the CouchDB admin and admin password
+- Install `hoodie-bootstrap.sh` to bootstrap the Hoodie application
+- Install `hoodie-daemon.sh` script for running Hoodie in production
+- Update documentation

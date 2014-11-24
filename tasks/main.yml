@@ -17,6 +17,17 @@
   tags:
     - hoodie_user
 
+- name: Hoodie user bin dir
+  sudo: True
+  file: "path=home=/home/{{ hoodie_admin }}/bin state=directory"
+  tags:
+    - hoodie_user
+
+- name: Example scripts
+  template: "src=hoodie-bootstrap.sh.j2 dest=/home/{{ hoodie_admin }}/bin/hoodie-bootstrap.sh mode=0755"
+  template: "src=hoodie-daemon.sh.j2 dest=/home/{{ hoodie_admin }}/bin/hoodie-daemon.sh mode=0755"
+  tags: hoodie_user
+
 - name: Install OS packages
   sudo: True
   apt: "name={{ item }} update_cache=yes"
@@ -64,9 +75,14 @@
   copy: "src=hoodie-local.d dest=/etc/couchdb/local.d/hoodie owner=couchdb group=couchdb"
   tags: couchdb
 
-- name: Start CouchDB
+- name: Configure CouchDB admin
+  sudo: False
+  command: "/usr/bin/curl -X PUT {{ hoodie_couchdb_url }}/_config/admins/{{ hoodie_couchdb_admin }} -d '{{ hoodie_couchdb_admin_passwd }}'"
+  tags: couchdb
+
+- name: Restart CouchDB
   sudo: True
-  service: name=couchdb state=started
+  service: "name=couchdb state=restarted"
   tags: couchdb
 
 - name: SSL directory
@@ -94,7 +110,7 @@
   file: "path=/etc/nginx/sites-enabled/default state=absent"
   tags: nginx
 
-- name: Start Nginx
+- name: Restart Nginx
   sudo: True
-  service: name=nginx state=restarted
+  service: "name=nginx state=restarted"
   tags: nginx

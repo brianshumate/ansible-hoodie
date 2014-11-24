@@ -6,6 +6,9 @@
 # hoodie_admin: Hoodie user account; for Vagrants, this should be 'vagrant'.
 # hoodie_app_name: Name of the Hoodie app
 # hoodie_app_domain: Fully Qualified Domain Name (FQDN) of the Hoodie app
+# hoodie_couchdb_url: URL to CouchDB
+# hoodie_couchdb_admin: CouchDB admin username
+# hoodie_couchdb_admin_passwd: CouchDB admin password
 # hoodie_soft_nofile: Soft open files limit for the hoodie user
 # hoodie_hard_nofile: Hard open files limit for the hoodie user
 # hoodie_node_packages: Node.js dependencies
@@ -18,6 +21,12 @@ hoodie_admin: "hoodie"
 hoodie_app_name: "myhoodie"
 
 hoodie_app_domain: "example.com"
+
+hoodie_couchdb_url: "http://127.0.0.1:5984"
+
+hoodie_couchdb_admin: "admin"
+
+hoodie_couchdb_admin_passwd: "CHANGEME"
 
 hoodie_soft_nofile: 768
 

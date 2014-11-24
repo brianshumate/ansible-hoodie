@@ -59,11 +59,16 @@ installed by default:
 
 ## Configuration
 
-At a minimum, modify the variables defined in the following files as
-necessary:
+Modify the variables defined in the following files as necessary:
 
 * `defaults/main.yml`
 * `vars/main.yml`
+
+At a minimum, you should change the value of the following variables:
+
+* hoodie_app_name
+* hoodie_app_domain
+* hoodie_couchdb_admin_passwd
 
 Copy the `examples/hosts.example` inventory to `hosts` and edit it to update
 the values for your Hoodie host. Be sure to change the following values:
@@ -96,27 +101,28 @@ ansible-playbook -i hosts site.yml
 
 ### Getting Started
 
-After the successful execution of this role, you can log into your Hoodie
-host machine and issue the following commands *as the hoodie user* to start
-your new Hoodie application:
+After the successful execution of this role, your Hoodie application will be
+ready to run.
+
+You can log into your Hoodie host, and use the following commands to bootstrap
+and run your Hoodie application:
 
 ```
-source nvm/nvm.sh
-nvm use v0.10.33
-hoodie create myhoodie
-cd myhoodie
-hoodie start
+sudo su - hoodie
+./bin/hoodie-bootstrap.sh
 ```
-
-Replace *0.10.33* and *myhoodie* in the above examples with your actual
-Node.js version number and the name of your Hoodie application respectively.
 
 You should now be able to access your application at the FQDN you specified in
 the `hoodie_app_domain` variable, e.g.:
 
 ```
-htts://example.com/
+https://www.example.com/
 ```
+
+**NOTE**: Given that the automatic starting of your example Hoodie app is
+for testing only, please examine the `hoodie-daemon.sh` script in the `bin`
+directory under hoodie user's home directory for an alternative means of
+executing a Hoodie instance in production.
 
 ## Dependencies
 
