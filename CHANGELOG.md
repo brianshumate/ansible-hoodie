@@ -89,3 +89,7 @@
 ## v1.1.2
 
 - Fix tasks
+
+## v1.1.3
+
+- Meta update
