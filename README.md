@@ -21,9 +21,9 @@ This role is based on the
 This Hoodie role requires a Debian based Linux host and has been tested to
 function on Ubuntu with the following specific software versions:
 
-* Ansible: 1.7.2
+* Ansible: 1.9.1
 * Hoodie: 0.6.3
-* Node.js: 0.10.33
+* Node.js: 0.12.2
 * Ubuntu: 14.04
 
 ## Role Variables

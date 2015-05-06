@@ -6,4 +6,4 @@
 # hoodie_node_version: Node.js version to use
 #############################################################################
 
-hoodie_node_version: 0.10.33
+hoodie_node_version: 0.12.2

@@ -93,3 +93,10 @@
 ## v1.1.3
 
 - Meta update
+
+## v1.1.4
+
+- Update supported versions
+- Update vagrant_hosts inventory for new private key location
+- More aggressive ownership/permissions updates after certain tasks
+- Update documentation

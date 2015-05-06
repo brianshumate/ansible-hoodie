@@ -1,4 +1,6 @@
 .DS_Store
 .vagrant
+_example.com.chained.crt
+files/_example.com.key
 node_modules
 examples/hosts

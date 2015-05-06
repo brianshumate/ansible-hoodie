@@ -25,6 +25,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     hoodie_config.vm.provision :ansible do |ansible|
       ansible.inventory_path = HOODIE_HOST
+      # Extra Ansible variables can be defined here
+      # (equivalent to ansible-playbook '--extra-vars' command line option)
+      # ansible.extra_vars = {
+      #   hoodie_admin: vagrant,
+      # }
       ansible.playbook = "site.yml"
     end
   end

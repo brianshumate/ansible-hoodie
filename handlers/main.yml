@@ -1,2 +1,6 @@
 ---
 # File: handlers/main.yml - Hoodie role handlers
+
+- name: Update permissions
+  sudo: True
+  file: "dest=/home/{{ hoodie_admin }} owner={{ hoodie_admin }} group={{ hoodie_admin }} state=directory recurse=yes"

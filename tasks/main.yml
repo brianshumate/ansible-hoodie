@@ -40,20 +40,23 @@
 
 - name: Install Node Version Manager
   sudo: True
-  git: "repo=https://github.com/creationix/nvm.git dest=/home/{{ hoodie_admin }}/nvm accept_hostkey=yes"
+  git: "repo=https://github.com/creationix/nvm.git dest=/home/{{ hoodie_admin }}/.nvm accept_hostkey=yes"
+  notify: Update permissions
   tags:
     - nodejs
 
 - name: Install Node.js
   sudo: True
-  shell: "source /home/{{ hoodie_admin }}/nvm/nvm.sh && nvm install {{ hoodie_node_version }} creates=/home/{{ hoodie_admin }}/nvm//v{{ hoodie_node_version }} executable=/bin/bash"
+  shell: "source /home/{{ hoodie_admin }}/.nvm/nvm.sh && nvm install {{ hoodie_node_version }} creates=/home/{{ hoodie_admin }}/.nvm/versions/node/v{{ hoodie_node_version }} executable=/bin/bash"
+  notify: Update permissions
   tags:
     - nodejs
 
 - name: Install Hoodie
   sudo: True
-  npm: "name={{ item }} executable=/home/{{ hoodie_admin }}/nvm/v{{ hoodie_node_version }}/bin/npm path=/home/{{ hoodie_admin }} global=yes state=present"
+  npm: "name={{ item }} executable=/home/{{ hoodie_admin }}/.nvm/versions/node/v{{ hoodie_node_version }}/bin/npm path=/home/{{ hoodie_admin }} global=yes state=present"
   with_items: hoodie_node_packages
+  notify: Update permissions
   tags:
     - nodejs
 
@@ -71,8 +74,8 @@
   template: "src=hoodie-monit.j2 dest=/etc/monit.d/hoodie"
   tags: monit
 
-- name: Correct permissions
-  file: "path=/home/{{ hoodie_admin }} owner={{ hoodie_admin }} recurse=yes"
+#- name: Correct permissions
+#  file: "path=/home/{{ hoodie_admin }} owner={{ hoodie_admin }} recurse=yes"
 
 - name: Hoodie CouchDB settings
   copy: "src=hoodie-local.d dest=/etc/couchdb/local.d/hoodie owner=couchdb group=couchdb"
