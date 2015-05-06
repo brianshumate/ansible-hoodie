@@ -26,10 +26,11 @@
 - name: Bootstrap script
   template: "src=hoodie-bootstrap.sh.j2 dest=/home/{{ hoodie_admin }}/bin/hoodie-bootstrap.sh mode=0755"
   tags: hoodie_scripts
+  when: hoodie_app_tutorial == "0"
 
 - name: Tutorial script
   template: "src=hoodie-bootstrap-tutorial.sh.j2 dest=/home/{{ hoodie_admin }}/bin/hoodie-bootstrap.sh mode=0755"
-  when: hoodie_app_tutorial
+  when: hoodie_app_tutorial == "1"
   tags: hoodie_scripts
 
 - name: Example scripts

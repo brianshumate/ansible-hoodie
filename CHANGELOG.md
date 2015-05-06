@@ -106,3 +106,10 @@
 - Rename some tasks
 - Conditionally use the store and account tutorial bootstrap script
 - Update documentation
+
+## v1.1.6
+
+- Correct tutorial handling
+- Update bootstrap scripts
+- Update Vagrantfile
+- Update documentation

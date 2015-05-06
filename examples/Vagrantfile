@@ -8,6 +8,7 @@ VAGRANTFILE_API_VERSION = "2"
 BOX_MEM = ENV['BOX_MEM'] || "2048"
 BOX_NAME =  ENV['BOX_NAME'] || "ubuntu/trusty64"
 HOODIE_HOST = ENV['HOODIE_HOST'] || "vagrant_hosts"
+HOODIE_TUTORIAL = ENV['HOODIE_TUTORIAL'] || "0"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :hoodie do |hoodie_config|
@@ -27,9 +28,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ansible.inventory_path = HOODIE_HOST
       # Extra Ansible variables can be defined here
       # (equivalent to ansible-playbook '--extra-vars' command line option)
-      # ansible.extra_vars = {
-      #   hoodie_admin: vagrant,
-      # }
+      ansible.extra_vars = {
+        hoodie_app_tutorial: HOODIE_TUTORIAL
+      }
       ansible.playbook = "site.yml"
     end
   end

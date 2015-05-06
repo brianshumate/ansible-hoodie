@@ -56,15 +56,24 @@ pip install ansible
 vagrant up
 ```
 
+If you'd like to install the Store and Account Tutorial version
+`hoodie-bootstrap` script, use the `HOODIE_TUTORIAL` environment variable
+before `vagrant up` like this:
+
+```
+HOODIE_TUTORIAL=1 vagrant up
+```
+
 ### Getting Started
 
 After the successful execution of this role, your Hoodie application will be
 ready to run.
 
-You can log into your Hoodie host, and use the following commands to bootstrap
-and run your Hoodie application:
+You can log into your Hoodie Vagrant, and use the following commands to
+bootstrap and run your Hoodie application:
 
 ```
+vagrant ssh
 sudo su - hoodie
 ./bin/hoodie-bootstrap.sh
 ```
