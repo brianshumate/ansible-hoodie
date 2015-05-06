@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Create a new Hoodie project using Node.js installed by Node Version Manager
+# and start it in an interactive shell session
+#
+# NB: This is only for testing; the hoodie-daemon.sh method should be used
+#     in production for now
+
+HOODIE_HOME="/home/{{ hoodie_admin }}"
+NVM_INIT="/home/{{ hoodie_admin }}/nvm/nvm.sh"
+
+if [ -f $NVM_INIT ]; then
+   source $NVM_INIT;
+   nvm use {{ hoodie_node_version }}
+else
+   echo "Node Version Manager init missing" >&2
+   exit 1
+fi
+
+hoodie new {{ hoodie_app_name }} -t gr2m/hoodie-store-and-account-tutorial
+
+cd {{ hoodie_app_name }}
+
+echo {{ hoodie_couchdb_admin_passwd }} | hoodie start

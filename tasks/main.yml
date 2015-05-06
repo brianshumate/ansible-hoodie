@@ -23,9 +23,14 @@
   tags:
     - hoodie_user
 
-- name: Example scripts
+- name: Bootstrap script
   template: "src=hoodie-bootstrap.sh.j2 dest=/home/{{ hoodie_admin }}/bin/hoodie-bootstrap.sh mode=0755"
-  tags: hoodie_user
+  tags: hoodie_scripts
+
+- name: Tutorial script
+  template: "src=hoodie-bootstrap-tutorial.sh.j2 dest=/home/{{ hoodie_admin }}/bin/hoodie-bootstrap.sh mode=0755"
+  when: hoodie_app_tutorial
+  tags: hoodie_scripts
 
 - name: Example scripts
   template: "src=hoodie-daemon.sh.j2 dest=/home/{{ hoodie_admin }}/bin/hoodie-daemon.sh mode=0755"

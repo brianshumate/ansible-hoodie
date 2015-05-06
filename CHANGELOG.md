@@ -100,3 +100,9 @@
 - Update vagrant_hosts inventory for new private key location
 - More aggressive ownership/permissions updates after certain tasks
 - Update documentation
+
+## v1.1.5
+
+- Rename some tasks
+- Conditionally use the store and account tutorial bootstrap script
+- Update documentation

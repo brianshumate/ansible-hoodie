@@ -88,7 +88,9 @@ examples:
 Replace *myhoodie.example.com* in the above examples with the actual
 fully qualified domain name of your hoodie application in your filenames.
 
-Note that the underscore (_) preceding the filenames is required.
+Note that the underscore (_) preceding the filenames is required and for
+security purposes, **you should not commit these files to a public
+repository**.
 
 ## Example Playbook
 

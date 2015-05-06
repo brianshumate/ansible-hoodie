@@ -55,3 +55,23 @@ mkvirtualenv ansible
 pip install ansible
 vagrant up
 ```
+
+### Getting Started
+
+After the successful execution of this role, your Hoodie application will be
+ready to run.
+
+You can log into your Hoodie host, and use the following commands to bootstrap
+and run your Hoodie application:
+
+```
+sudo su - hoodie
+./bin/hoodie-bootstrap.sh
+```
+
+You should now be able to access your application at the FQDN you specified in
+the `hoodie_app_domain` variable, e.g.:
+
+```
+https://www.example.com/
+```
