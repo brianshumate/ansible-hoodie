@@ -113,3 +113,7 @@
 - Update bootstrap scripts
 - Update Vagrantfile
 - Update documentation
+
+## v1.1.7
+
+- Update documentation

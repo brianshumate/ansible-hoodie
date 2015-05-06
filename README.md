@@ -18,8 +18,8 @@ This role is based on the
 
 ## Requirements
 
-This Hoodie role requires a Debian based Linux host and has been tested to
-function on Ubuntu with the following specific software versions:
+This Hoodie role requires a Ubuntu based Linux host and has been tested to
+function with the following specific software versions:
 
 * Ansible: 1.9.1
 * Hoodie: 0.6.3
@@ -34,7 +34,7 @@ All variables are specified in `defaults/main.yml` and `vars/main.yml`.
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| hoodie_node_version | 0.10.33 | Preferred Node.js version |
+| hoodie_node_version | 0.12.2 | Preferred Node.js version |
 
 The following OS dependency packages are defined in `hoodie_os_packages` and
 installed by default:
